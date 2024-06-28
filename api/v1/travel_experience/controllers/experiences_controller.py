@@ -10,3 +10,8 @@ router = APIRouter()
 async def get_experiences():
     documents = await service.list_all()
     return documents
+
+@router.post("/")
+async def create_experience(data: Experience):
+    result = await service.create(data)
+    return result

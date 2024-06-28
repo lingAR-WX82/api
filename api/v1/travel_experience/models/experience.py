@@ -4,7 +4,7 @@ from typing import Optional
 
 
 class Experience(BaseModel):
-    id: Optional[ObjectId] = Field(alias='_id')
+    id: Optional[ObjectId] = Field(alias='_id', default=None)
     title: str
     description: str
     latitude: float

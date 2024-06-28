@@ -10,3 +10,8 @@ async def list_all():
     documents = await cursor.to_list(length=None)
 
     return documents
+
+async def create(data: Experience):
+    result = await collection.insert_one(data.dict())
+
+    return str(result.inserted_id)
