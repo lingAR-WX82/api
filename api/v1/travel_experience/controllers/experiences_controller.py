@@ -1,8 +1,12 @@
 from fastapi import APIRouter
+from typing import List
+from ..services import experiences_service as service
+from ..models.experience import Experience
 
 router = APIRouter()
 
 
-@router.get("/")
+@router.get("/", response_model=List[Experience])
 async def get_experiences():
-    return [{"name": "Trekking in the Himalayas"}, {"name": "Sunbathing in the Caribbean"}]
+    documents = await service.list_all()
+    return documents
